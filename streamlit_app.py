@@ -5,8 +5,8 @@ import plotly.express as px
 import io
 from scipy import stats
 
-BACKEND_URL = "http://127.0.0.1:8000/full-analysis/"
-EXPLAIN_URL = "http://127.0.0.1:8000/explain-ranking/"
+BACKEND_URL = "https://resume-analyzer-236k.onrender.com/full-analysis/"
+EXPLAIN_URL = "https://resume-analyzer-236k.onrender.com/explain-ranking/"
 
 st.set_page_config(page_title="AI Resume Analyzer", layout="wide")
 
