@@ -1,0 +1,61 @@
+Job Title: Data Analyst – Python & Cloud
+
+We are looking for a Data Analyst with strong analytical and technical skills to join our growing team. The ideal candidate will have experience working with large datasets, building dashboards, and performing statistical analysis.
+
+Responsibilities:
+
+Analyze large datasets using Python and SQL
+
+Build data pipelines and automate ETL processes
+
+Develop dashboards using Power BI or Tableau
+
+Perform exploratory data analysis (EDA)
+
+Create data visualizations using Matplotlib or Seaborn
+
+Work with cloud platforms such as Google Cloud Platform (GCP) or AWS
+
+Collaborate with cross-functional teams
+
+Optimize database queries for performance
+
+Generate business insights and reports
+
+Required Skills:
+
+Python
+
+Pandas
+
+NumPy
+
+SQL
+
+Power BI or Tableau
+
+Data Cleaning
+
+Data Visualization
+
+Statistical Analysis
+
+Machine Learning basics
+
+Google Cloud Platform (GCP)
+
+REST APIs
+
+Git
+
+Preferred:
+
+Experience with FastAPI
+
+Knowledge of Docker
+
+Experience deploying applications on Cloud Run
+
+Understanding of NLP
+
+Strong problem-solving skills
