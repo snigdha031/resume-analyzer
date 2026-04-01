@@ -2,8 +2,11 @@ import streamlit as st
 import requests
 import pandas as pd
 import plotly.express as px
+import time
 import io
 from scipy import stats
+
+
 
 BACKEND_URL = "https://resume-analyzer-236k.onrender.com/full-analysis/"
 EXPLAIN_URL = "https://resume-analyzer-236k.onrender.com/explain-ranking/"
@@ -71,6 +74,7 @@ if analyze_button:
                         "Suggestions": result.get("improvement_suggestions", []),
                         "Summary": result.get("tailored_summary", "")
                     })
+                    time.sleep(10)
                 else:
                     st.error(f"Error analyzing {file.name}")
 
