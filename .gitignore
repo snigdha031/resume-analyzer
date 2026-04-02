@@ -1,0 +1,7 @@
+.env
+venv/
+temp_resume.pdf
+.DS_Store
+__pycache__/
+*.pyc
+.vscode/
