@@ -1,4 +1,4 @@
-# 📄 AI-Powered Resume Analyzer
+# AI-Powered Resume Analyzer
 
 An end-to-end AI application that analyzes and ranks resumes against a job description using a hybrid scoring system — combining rule-based skill matching with Google Gemini semantic analysis.
 
@@ -7,40 +7,40 @@ An end-to-end AI application that analyzes and ranks resumes against a job descr
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🤖 AI-Powered Scoring
+### AI-Powered Scoring
 - **Rule-Based Skill Matching** — extracts and compares skills from resume vs job description
 - **Semantic Scoring** — uses Google Gemini 2.5 Flash to evaluate contextual relevance beyond keyword matching
 - **Hybrid Final Score** — weighted combination of both scoring methods
 
-### 📊 Analytics Dashboard
+### Analytics Dashboard
 - Score distribution histogram
 - Candidate ranking bar chart
 - Rule vs Semantic scatter plot
 - Score spread boxplot
 
-### 🔥 Skill Gap Analytics
+### Skill Gap Analytics
 - Candidate × Skill coverage heatmap (green = present, red = missing)
 - Skill supply vs demand gap chart across all candidates
 - Top missing skills summary table
 
-### 📐 Statistical Analysis
+### Statistical Analysis
 - **Z-Score Normalization** — shows each candidate's standing relative to the pool
 - **Percentile Ranking** — ranks candidates as Top 10%, Top 25%, etc.
 - **Weighted Scoring Experiment** — interactive slider to adjust Rule vs Semantic weight in real time
 
-### 🤖 AI Ranking Explanation
+### AI Ranking Explanation
 - Generates a plain English paragraph explaining why candidates ranked the way they did
 - Highlights key skill differences, strengths, and recruiter recommendations
 
-### 📥 Export
+### Export
 - Download full results as CSV
 - Download filtered results (by minimum score threshold) as CSV
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -55,7 +55,7 @@ An end-to-end AI application that analyzes and ranks resumes against a job descr
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 User (Streamlit Cloud)
@@ -75,7 +75,7 @@ FastAPI Backend (Render)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 resume-analyzer/
@@ -97,7 +97,7 @@ resume-analyzer/
 
 ---
 
-## ⚙️ Local Setup
+## Local Setup
 
 ### 1. Clone the repo
 ```bash
@@ -139,7 +139,7 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 📊 How It Works
+## How It Works
 
 1. **Upload** one or more resume PDFs
 2. **Paste** the job description
@@ -159,7 +159,7 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 🔑 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -171,7 +171,7 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 ### Backend → Render
 - Free tier web service
@@ -185,7 +185,7 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 - [ ] Database integration (PostgreSQL) for storing historical analysis runs
 - [ ] Support for DOCX resume format
 - [ ] Multi-language JD support
@@ -194,13 +194,13 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 👩‍💻 Author
+## Author
 
 **Snigdha Raghavan**  
 [GitHub](https://github.com/snigdha031) · [LinkedIn](https://www.linkedin.com/in/snigdha-rp-32a03820a/) ← add your LinkedIn
 
 ---
 
-## 📄 License
+## License
 
 MIT License — free to use and modify.
