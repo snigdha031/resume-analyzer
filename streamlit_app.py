@@ -196,7 +196,7 @@ if st.session_state.results:
 
     if all_skills:
 
-        st.markdown("### 🗺️ Candidate × Skill Coverage Heatmap")
+        st.markdown("### Candidate × Skill Coverage Heatmap")
         st.caption("Green = skill present  |  Red = skill missing")
 
         heatmap_data = []
@@ -222,7 +222,7 @@ if st.session_state.results:
         fig_heatmap.update_layout(xaxis_tickangle=-35, coloraxis_showscale=False)
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
-        st.markdown("### 📉 Skill Demand vs Supply Gap")
+        st.markdown("### Skill Demand vs Supply Gap")
         st.caption("Shows which skills are most lacking across all candidates")
 
         total_candidates = len(df)
@@ -272,7 +272,7 @@ if st.session_state.results:
 
     col_w1, col_w2 = st.columns(2)
     with col_w1:
-        rule_weight = st.slider("📏 Rule-Based Weight (%)", 0, 100, 50, step=5, key="rule_weight")
+        rule_weight = st.slider("Rule-Based Weight (%)", 0, 100, 50, step=5, key="rule_weight")
     with col_w2:
         semantic_weight = 100 - rule_weight
         st.metric("Semantic Weight (%)", semantic_weight)
@@ -389,7 +389,7 @@ if st.session_state.results:
                     "percentile": row["Percentile"]
                 })
 
-            with st.spinner("🤖 AI is generating explanation..."):
+            with st.spinner("AI is generating explanation..."):
                 try:
                     explain_response = requests.post(
                         EXPLAIN_URL,
@@ -418,7 +418,7 @@ if st.session_state.results:
     st.subheader("Detailed Analysis")
 
     for index, row in df.iterrows():
-        with st.expander(f"🔎 {row['Candidate']} — Score: {row['Final Score']}"):
+        with st.expander(f"{row['Candidate']} — Score: {row['Final Score']}"):
 
             st.markdown("### Matched Skills")
             st.write(row["Matched Skills"])
