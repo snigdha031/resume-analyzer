@@ -17,12 +17,12 @@ st.title("📄 AI-Powered Resume Analyzer")
 st.markdown("Upload multiple resumes and evaluate them against a job description.")
 
 # -------------------------------
-# 📌 Input Section
+# Input Section
 # -------------------------------
-jd_text = st.text_area("📝 Paste Job Description Here", height=250)
+jd_text = st.text_area("Paste Job Description Here", height=250)
 
 uploaded_files = st.file_uploader(
-    "📂 Upload Resume PDFs",
+    "Upload Resume PDFs",
     type=["pdf"],
     accept_multiple_files=True
 )
@@ -34,7 +34,7 @@ if "results" not in st.session_state:
     st.session_state.results = []
 
 # -------------------------------
-# 🚀 Processing
+# Processing
 # -------------------------------
 if analyze_button:
 
@@ -79,13 +79,13 @@ if analyze_button:
                     st.error(f"Error analyzing {file.name}")
 
             except requests.exceptions.ConnectionError:
-                st.error("⚠️ Backend is not running. Start FastAPI first.")
+                st.error("Backend is not running. Start FastAPI first.")
                 st.stop()
 
     st.session_state.results = results
 
 # -------------------------------
-# 📊 Results Section
+# Results Section
 # -------------------------------
 if st.session_state.results:
 
@@ -98,12 +98,12 @@ if st.session_state.results:
         use_container_width=True
     )
 
-    # ✅ Export Full Results
-    st.markdown("### 📥 Export Results")
+    # Export Full Results
+    st.markdown("### Export Results")
     csv_buffer = io.StringIO()
     df[["Candidate", "Rule Score", "Semantic Score", "Final Score", "Matched Skills", "Missing Skills"]].to_csv(csv_buffer, index=False)
     st.download_button(
-        label="⬇️ Download Full Results as CSV",
+        label="Download Full Results as CSV",
         data=csv_buffer.getvalue(),
         file_name="resume_analysis_results.csv",
         mime="text/csv"
@@ -116,29 +116,29 @@ if st.session_state.results:
     )
 
     # ====================================================
-    # 🧠 Insights & Analytics
+    # Insights & Analytics
     # ====================================================
-    st.subheader("🧠 Insights & Analytics")
+    st.subheader("Insights & Analytics")
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("📌 Average Score", f"{df['Final Score'].mean():.2f}")
-    col2.metric("📈 Highest Score", f"{df['Final Score'].max():.2f}")
-    col3.metric("📉 Lowest Score", f"{df['Final Score'].min():.2f}")
+    col1.metric("Average Score", f"{df['Final Score'].mean():.2f}")
+    col2.metric("Highest Score", f"{df['Final Score'].max():.2f}")
+    col3.metric("Lowest Score", f"{df['Final Score'].min():.2f}")
 
     if df["Semantic Score"].std() == 0 or df["Rule Score"].std() == 0:
-        st.warning("⚠️ Semantic Score is 0 for all candidates — correlation cannot be computed.")
+        st.warning("Semantic Score is 0 for all candidates — correlation cannot be computed.")
     else:
         correlation = df["Rule Score"].corr(df["Semantic Score"])
         st.info(f"📊 Correlation (Rule vs Semantic): {correlation:.2f}")
 
-    st.markdown("### 🔥 High Performers (Score > 80)")
+    st.markdown("### High Performers (Score > 80)")
     high_performers = df[df["Final Score"] > 80]
     if not high_performers.empty:
         st.dataframe(high_performers[["Candidate", "Final Score"]])
     else:
         st.write("No high-performing candidates found.")
 
-    st.markdown("### 🎯 Filter Candidates")
+    st.markdown("### Filter Candidates")
     min_score = st.slider("Select Minimum Score", 0, 100, 30)
     filtered_df = df[df["Final Score"] >= min_score]
     st.dataframe(filtered_df[["Candidate", "Final Score"]])
@@ -154,24 +154,24 @@ if st.session_state.results:
     )
 
     # -------------------------------
-    # 📊 Analytics Dashboard
+    # Analytics Dashboard
     # -------------------------------
-    st.subheader("📊 Analytics Dashboard")
+    st.subheader("Analytics Dashboard")
 
-    st.markdown("### 📊 Score Distribution")
+    st.markdown("### Score Distribution")
     fig_hist = px.histogram(df, x="Final Score", nbins=10, title="Distribution of Final Scores")
     st.plotly_chart(fig_hist, use_container_width=True)
 
-    st.markdown("### 📈 Candidate Ranking")
+    st.markdown("### Candidate Ranking")
     fig_bar = px.bar(df, x="Candidate", y="Final Score", color="Final Score", title="Candidate Ranking by Final Score")
     st.plotly_chart(fig_bar, use_container_width=True)
 
-    st.markdown("### 📉 Rule vs Semantic Score")
+    st.markdown("### Rule vs Semantic Score")
     fig_scatter = px.scatter(df, x="Rule Score", y="Semantic Score", text="Candidate", size="Final Score", title="Rule vs Semantic Relationship")
     fig_scatter.update_traces(textposition="top center")
     st.plotly_chart(fig_scatter, use_container_width=True)
 
-    st.markdown("### 📦 Score Spread Analysis")
+    st.markdown("### Score Spread Analysis")
     df_melted = df.melt(
         id_vars=["Candidate"],
         value_vars=["Rule Score", "Semantic Score", "Final Score"],
@@ -182,9 +182,9 @@ if st.session_state.results:
     st.plotly_chart(fig_box, use_container_width=True)
 
     # ====================================================
-    # 🔥 SKILL GAP ANALYTICS
+    # SKILL GAP ANALYTICS
     # ====================================================
-    st.subheader("🔥 Skill Gap Analytics")
+    st.subheader("Skill Gap Analytics")
 
     all_matched = []
     all_missing = []
@@ -253,21 +253,21 @@ if st.session_state.results:
         fig_gap.update_layout(xaxis_tickangle=-35, legend_title="")
         st.plotly_chart(fig_gap, use_container_width=True)
 
-        st.markdown("### 🚨 Top Missing Skills Summary")
+        st.markdown("### Top Missing Skills Summary")
         top_missing = skill_stats_df[skill_stats_df["Gap %"] > 0][["Skill", "Candidates Missing Skill", "Gap %"]].reset_index(drop=True)
         if not top_missing.empty:
             st.dataframe(top_missing, use_container_width=True)
         else:
-            st.success("✅ All candidates have all required skills!")
+            st.success("All candidates have all required skills!")
     else:
         st.info("No skill data available to generate heatmap.")
 
     # ====================================================
-    # 📐 STATISTICAL ANALYSIS
+    # STATISTICAL ANALYSIS
     # ====================================================
-    st.subheader("📐 Statistical Analysis")
+    st.subheader("Statistical Analysis")
 
-    st.markdown("### ⚖️ Weighted Score Experiment")
+    st.markdown("### Weighted Score Experiment")
     st.caption("Adjust how much weight to give Rule-Based vs Semantic scoring and see how rankings change.")
 
     col_w1, col_w2 = st.columns(2)
@@ -275,7 +275,7 @@ if st.session_state.results:
         rule_weight = st.slider("📏 Rule-Based Weight (%)", 0, 100, 50, step=5, key="rule_weight")
     with col_w2:
         semantic_weight = 100 - rule_weight
-        st.metric("🧠 Semantic Weight (%)", semantic_weight)
+        st.metric("Semantic Weight (%)", semantic_weight)
 
     df["Weighted Score"] = round(
         (df["Rule Score"] * rule_weight / 100) +
@@ -296,7 +296,7 @@ if st.session_state.results:
     )
     st.plotly_chart(fig_weighted, use_container_width=True)
 
-    st.markdown("### 📊 Z-Score Normalization")
+    st.markdown("### Z-Score Normalization")
     st.caption("Z-score shows how far each candidate is from the average. Positive = above average, Negative = below average.")
 
     if df["Final Score"].std() > 0:
@@ -331,7 +331,7 @@ if st.session_state.results:
     fig_zscore.update_traces(textposition="outside")
     st.plotly_chart(fig_zscore, use_container_width=True)
 
-    st.markdown("### 🏅 Percentile Ranking")
+    st.markdown("### Percentile Ranking")
     st.caption("Percentile shows what % of candidates each person outperforms.")
 
     df["Percentile"] = df["Final Score"].rank(pct=True).mul(100).round(1)
@@ -346,7 +346,7 @@ if st.session_state.results:
         elif p >= 50:
             return "🥉 Top 50%"
         else:
-            return "📉 Bottom 50%"
+            return "Bottom 50%"
 
     percentile_df["Tier"] = percentile_df["Percentile"].apply(percentile_label)
     st.dataframe(percentile_df, use_container_width=True)
@@ -365,14 +365,14 @@ if st.session_state.results:
     st.plotly_chart(fig_percentile, use_container_width=True)
 
     # ====================================================
-    # 🤖 AI RANKING EXPLANATION (NEW)
+    # AI RANKING EXPLANATION (NEW)
     # ====================================================
-    st.subheader("🤖 AI Ranking Explanation")
+    st.subheader("AI Ranking Explanation")
     st.caption("Ask AI to explain in plain English why candidates ranked the way they did.")
 
     if len(df) >= 2:
 
-        explain_button = st.button("💬 Generate AI Explanation")
+        explain_button = st.button("Generate AI Explanation")
 
         if explain_button:
 
@@ -405,38 +405,38 @@ if st.session_state.results:
                         st.error("Failed to get explanation from backend.")
 
                 except requests.exceptions.ConnectionError:
-                    st.error("⚠️ Backend is not running.")
+                    st.error("Backend is not running.")
                 except requests.exceptions.Timeout:
-                    st.error("⚠️ Request timed out. Try again.")
+                    st.error("Request timed out. Try again.")
 
     else:
         st.info("Upload at least 2 resumes to generate a comparative AI explanation.")
 
     # -------------------------------
-    # 📌 Detailed Analysis
+    # Detailed Analysis
     # -------------------------------
-    st.subheader("📌 Detailed Analysis")
+    st.subheader("Detailed Analysis")
 
     for index, row in df.iterrows():
         with st.expander(f"🔎 {row['Candidate']} — Score: {row['Final Score']}"):
 
-            st.markdown("### ✅ Matched Skills")
+            st.markdown("### Matched Skills")
             st.write(row["Matched Skills"])
 
-            st.markdown("### ❌ Missing Skills")
+            st.markdown("### Missing Skills")
             st.write(row["Missing Skills"])
 
-            st.markdown("### 💪 AI Strengths")
+            st.markdown("### AI Strengths")
             for strength in row["AI Strengths"]:
                 st.write(f"- {strength}")
 
-            st.markdown("### ⚠️ AI Weaknesses")
+            st.markdown("### AI Weaknesses")
             for weakness in row["AI Weaknesses"]:
                 st.write(f"- {weakness}")
 
-            st.markdown("### 🚀 Improvement Suggestions")
+            st.markdown("### Improvement Suggestions")
             for suggestion in row["Suggestions"]:
                 st.write(f"- {suggestion}")
 
-            st.markdown("### 🧾 Tailored Summary")
+            st.markdown("### Tailored Summary")
             st.write(row["Summary"])
