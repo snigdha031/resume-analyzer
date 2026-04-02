@@ -2,8 +2,8 @@
 
 An end-to-end AI application that analyzes and ranks resumes against a job description using a hybrid scoring system — combining rule-based skill matching with Google Gemini semantic analysis.
 
-🔗 **Live Demo:** [resume-analyzer.streamlit.app](snigdha031/resume-analyzer/main/streamlit_app.py) 
-🛠 **Backend API:** [resume-analyzer on Render](https://resume-analyzer-236k.onrender.com)
+**Live Demo:** [resume-analyzer.streamlit.app](snigdha031/resume-analyzer/main/streamlit_app.py) 
+**Backend API:** [resume-analyzer on Render](https://resume-analyzer-236k.onrender.com)
 
 ---
 
