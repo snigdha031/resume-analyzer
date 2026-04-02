@@ -197,7 +197,7 @@ Open `http://localhost:8501` in your browser.
 ## Author
 
 **Snigdha Raghavan**  
-[GitHub](https://github.com/snigdha031) · [LinkedIn](https://www.linkedin.com/in/snigdha-rp-32a03820a/) ← add your LinkedIn
+[GitHub](https://github.com/snigdha031) · [LinkedIn](https://www.linkedin.com/in/snigdha-rp-32a03820a/) 
 
 ---
 
