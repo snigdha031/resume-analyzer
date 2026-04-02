@@ -42,6 +42,9 @@ def analyze_with_ai(resume_text: str, jd_text: str):
         response = client.models.generate_content(
             model="models/gemini-2.5-flash",
             contents=prompt,
+            config={
+                "temperature": 0  #makes responses more consistent
+            }
         )
 
         raw_text = response.text.strip()
