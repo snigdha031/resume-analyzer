@@ -3,7 +3,23 @@
 An end-to-end AI application that analyzes and ranks resumes against a job description using a hybrid scoring system — combining rule-based skill matching with Google Gemini semantic analysis.
 
 **Live Demo:** [AI Resume Analyzer](https://resume-analyzer-ksqkasvuvwizbxrbrc52fk.streamlit.app/)
-**Backend API:** [resume-analyzer on Render](https://resume-analyzer-236k.onrender.com/docs)
+**Backend API:** [resume-analyzer on Render](https://resume-analyzer-236k.onrender.com)
+
+---
+
+## Screenshots
+
+### Resume Comparison Table
+![Comparison Table](screenshots/table.png)
+
+### Skill Coverage Heatmap
+![Heatmap](screenshots/heatmap.png)
+
+### Analytics Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Statistical Analysis
+![Stats](screenshots/stats.png)
 
 ---
 
